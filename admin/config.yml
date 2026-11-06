@@ -1,14 +1,104 @@
-
 backend:
   name: git-gateway
   branch: main
 
+# Uploaded images and documents are stored in the repository.
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+# Contributors can save drafts and submit items for review.
 publish_mode: editorial_workflow
 
+# Keep the CMS dashboard at /admin/.
+site_url: https://YOUR-NETLIFY-SITE.netlify.app
+display_url: https://YOUR-NETLIFY-SITE.netlify.app
+logo_url: /images/obstetricks-logo.png
+
 collections:
+  # Global information used across the website.
+  - name: "site_settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Website Settings"
+        file: "content/settings/general.yml"
+        fields:
+          - { label: "Website Name", name: "site_name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string", required: false }
+          - { label: "Short Description", name: "description", widget: "text", required: false }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Contact Email", name: "contact_email", widget: "string", required: false }
+          - { label: "Footer Text", name: "footer_text", widget: "string", required: false }
+          - { label: "Social Links", name: "social_links", widget: "list", required: false, fields: [{ label: "Platform", name: "platform", widget: "string" }, { label: "URL", name: "url", widget: "string" }] }
+
+  # Homepage copy, hero image, featured items and calls to action.
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "home"
+        label: "Homepage Content"
+        file: "content/pages/home.yml"
+        fields:
+          - { label: "Hero Eyebrow", name: "hero_eyebrow", widget: "string", required: false }
+          - { label: "Hero Heading", name: "hero_heading", widget: "string" }
+          - { label: "Hero Description", name: "hero_description", widget: "text" }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Primary Button Text", name: "primary_button_text", widget: "string", required: false }
+          - { label: "Primary Button Link", name: "primary_button_link", widget: "string", required: false }
+          - { label: "About Heading", name: "about_heading", widget: "string", required: false }
+          - { label: "About Text", name: "about_text", widget: "markdown", required: false }
+          - { label: "Featured Content", name: "featured_content", widget: "list", required: false, fields: [{ label: "Title", name: "title", widget: "string" }, { label: "Description", name: "description", widget: "text" }, { label: "Link", name: "link", widget: "string" }] }
+          - { label: "Newsletter Heading", name: "newsletter_heading", widget: "string", required: false }
+          - { label: "Newsletter Description", name: "newsletter_description", widget: "text", required: false }
+
+  # Editable standalone informational pages. Add a new entry for each page.
+  - name: "website_pages"
+    label: "Website Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    filter: { field: "content_type", value: "page" }
+    fields:
+      - { label: "Content Type", name: "content_type", widget: "hidden", default: "page" }
+      - { label: "Page Title", name: "title", widget: "string" }
+      - { label: "Navigation Label", name: "nav_label", widget: "string", required: false }
+      - { label: "Page Description", name: "description", widget: "text", required: false }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Page Content", name: "body", widget: "markdown" }
+
+  # Obstetrics library entries.
+  - name: "obstetrics"
+    label: "Obstetrics"
+    folder: "content/obstetrics"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Topic Type", name: "topic_type", widget: "select", options: ["Mnemonic", "Clinical Tip", "Concept", "Protocol", "Other"] }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  # Gynaecology library entries.
+  - name: "gynaecology"
+    label: "Gynaecology"
+    folder: "content/gynaecology"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Topic Type", name: "topic_type", widget: "select", options: ["Mnemonic", "Clinical Tip", "Concept", "Protocol", "Other"] }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  # All Clinical Pearls subcategories live in one searchable content collection.
   - name: "clinical_pearls"
     label: "Clinical Pearls"
     folder: "content/clinical-pearls"
@@ -18,6 +108,56 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Category", name: "category", widget: "select", options: ["Useful Clinical Concepts", "Signs", "Syndromes", "Classifications", "Diagnostic Criteria", "Studies and Trials", "Gold Standards", "First-line Drugs", "Terms and Definitions", "e-OBGYN"] }
+      - label: "Clinical Pearl Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "Useful Clinical Concepts"
+          - "Signs in Obstetrics and Gynaecology"
+          - "Syndromes in Obstetrics and Gynaecology"
+          - "Classifications in O&G"
+          - "Diagnostic Criteria and Scoring Systems"
+          - "Studies and Trials in O&G"
+          - "Diseases and Gold Standards"
+          - "First-line Drugs"
+          - "Terms and Definitions"
+          - "e-OBGYN Sessions"
       - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Source / Reference", name: "source", widget: "string", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  # Quiz questions and answers.
+  - name: "quizzes"
+    label: "Quizzes"
+    folder: "content/quizzes"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Quiz Title", name: "title", widget: "string" }
+      - { label: "Topic", name: "topic", widget: "string", required: false }
+      - { label: "Question", name: "question", widget: "text" }
+      - label: "Answer Options"
+        name: "options"
+        widget: "list"
+        fields:
+          - { label: "Option", name: "option", widget: "string" }
+          - { label: "Correct Answer", name: "correct", widget: "boolean", default: false }
+      - { label: "Explanation", name: "explanation", widget: "markdown", required: false }
+
+  # News, announcements and updates.
+  - name: "announcements"
+    label: "Announcements"
+    folder: "content/announcements"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Content", name: "body", widget: "markdown" }
