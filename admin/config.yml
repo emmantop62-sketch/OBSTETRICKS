@@ -1,0 +1,23 @@
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "clinical_pearls"
+    label: "Clinical Pearls"
+    folder: "content/clinical-pearls"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Useful Clinical Concepts", "Signs", "Syndromes", "Classifications", "Diagnostic Criteria", "Studies and Trials", "Gold Standards", "First-line Drugs", "Terms and Definitions", "e-OBGYN"] }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
