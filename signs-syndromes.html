@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signs & Syndromes | OBSTETRICKS</title>
+    <meta name="description" content="Explore signs and syndromes in Obstetrics and Gynaecology with the OBSTETRICKS learning library.">
+    <meta name="theme-color" content="#102c24">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .library-hero { background: #102c24; color: #fff; padding: 105px 0 95px; position: relative; overflow: hidden; }
+        .library-hero::before, .library-hero::after { content:""; position:absolute; border:1px solid rgba(213,172,99,.18); border-radius:50%; pointer-events:none; }
+        .library-hero::before { width:430px; height:430px; right:-110px; top:-210px; }
+        .library-hero::after { width:300px; height:300px; right:-45px; top:-145px; }
+        .library-hero .container { position:relative; z-index:1; }
+        .library-kicker { color:#b4cf8b; font-size:11px; font-weight:800; letter-spacing:2.5px; display:inline-block; margin-bottom:22px; }
+        .library-hero h1 { font-family:var(--heading); font-size:clamp(42px,6vw,70px); line-height:1.08; max-width:760px; font-weight:600; }
+        .library-hero h1 span { color:#b4cf8b; font-style:italic; }
+        .library-hero p { max-width:650px; color:#d0d9d1; font-size:16px; line-height:1.9; margin-top:24px; }
+        .library-breadcrumb { margin-top:32px; font-size:12px; color:#b8c7bd; }
+        .library-breadcrumb a { color:#d5ac63; }
+        .library-content { background:#f8f7f1; min-height:460px; padding:85px 0 105px; }
+        .library-intro { max-width:720px; margin:0 auto 48px; text-align:center; }
+        .library-intro h2 { font-family:var(--heading); color:#102c24; font-size:clamp(30px,4vw,42px); font-weight:600; }
+        .library-intro p { color:#68756d; line-height:1.9; margin-top:14px; font-size:14px; }
+        .library-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+        .library-panel { background:#fff; border:1px solid #e7e9df; padding:34px; border-radius:6px; box-shadow:0 14px 35px rgba(16,44,36,.04); }
+        .library-panel .panel-icon { font-size:30px; margin-bottom:20px; }
+        .library-panel .panel-label { color:#8aa65d; font-size:10px; font-weight:800; letter-spacing:2px; }
+        .library-panel h3 { font-family:var(--heading); color:#102c24; font-size:27px; margin:10px 0 12px; }
+        .library-panel p { color:#68756d; font-size:13px; line-height:1.8; }
+        .library-empty { margin-top:25px; padding:18px; background:#f3f5ee; border-left:3px solid #a3c76b; color:#657168; font-size:12px; line-height:1.8; }
+        .library-footer { background:#102c24; color:#d0d9d1; padding:25px 0; text-align:center; font-size:12px; }
+        .library-footer a { color:#d5ac63; font-weight:700; }
+        @media(max-width:700px) { .library-hero {padding:75px 0 70px;} .library-columns {grid-template-columns:1fr;} .library-panel {padding:27px;} .library-content {padding:65px 0 75px;} }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <a href="../index.html#home" class="logo">OBSTE<span>TRICKS</span><small>THE O&G MEMORY HUB</small></a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#about">The Book</a>
+                <a href="clinical-pearls.html">Clinical Pearls</a>
+                <a href="../index.html#explore">Explore</a>
+                <a href="../index.html#quiz">Take a Quiz</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="library-hero">
+            <div class="container reveal">
+                <span class="library-kicker">THE OBSTETRICKS LEARNING LIBRARY</span>
+                <h1>Signs <span>&</span> Syndromes</h1>
+                <p>A focused collection of important signs and syndromes in Obstetrics and Gynaecology, organised to make clinical learning and revision easier.</p>
+                <div class="library-breadcrumb"><a href="../index.html">Home</a> &nbsp; / &nbsp; <a href="clinical-pearls.html">Clinical Pearls</a> &nbsp; / &nbsp; Signs &amp; Syndromes</div>
+            </div>
+        </section>
+
+        <section class="library-content">
+            <div class="container">
+                <div class="library-intro reveal">
+                    <span class="section-tag">BUILD YOUR CLINICAL KNOWLEDGE</span>
+                    <h2>Recognise. Understand. Remember.</h2>
+                    <p>Browse the two collections below. Entries will be arranged alphabetically, with each topic opening its own dedicated learning page.</p>
+                </div>
+                <div class="library-columns">
+                    <article class="library-panel reveal">
+                        <div class="panel-icon">🩺</div>
+                        <span class="panel-label">COLLECTION 01</span>
+                        <h3>Signs in O&amp;G</h3>
+                        <p>Named clinical signs and examination findings encountered in Obstetrics and Gynaecology.</p>
+                        <div class="library-empty">The signs directory is ready for entries. Topics will be added from the book and checked against the source material.</div>
+                    </article>
+                    <article class="library-panel reveal">
+                        <div class="panel-icon">🧬</div>
+                        <span class="panel-label">COLLECTION 02</span>
+                        <h3>Syndromes in O&amp;G</h3>
+                        <p>Important syndromes, their defining features and relevant clinical associations.</p>
+                        <div class="library-empty">The syndromes directory is ready for entries. Topics will be added from the book and checked against the source material.</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="library-footer">
+        <div class="container">© <span id="year"></span> OBSTETRICKS · <a href="clinical-pearls.html">Back to Clinical Pearls</a> · <a href="../index.html">Home</a></div>
+    </footer>
+    <script src="../script.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
